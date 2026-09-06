@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Katlech — CBT & EMDR Psychotherapy
+   Kat Lech Psychotherapy — CBT & EMDR
    Design tokens first, then base, layout, components, sections, utilities.
    Every brand value lives in :root — change it there and it changes site-wide.
    ========================================================================== */
@@ -233,23 +233,13 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 .wordmark {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--ink);
-  white-space: nowrap;
+  display: block;
+  line-height: 0;
 }
 
-.wordmark span {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  color: var(--ink-muted);
-  margin-top: 4px;
+.wordmark img {
+  height: clamp(20px, 4.5vw, 28px);
+  width: auto;
 }
 
 .nav-toggle {

@@ -1,6 +1,6 @@
 # katlech.co.uk
 
-Static website for Kat's psychotherapy practice — BABCP-accredited CBT and
+Static website for Kat Lech Psychotherapy — BABCP-accredited CBT and
 EMDR Europe-accredited EMDR therapy for trauma, anxiety and ADHD, delivered
 online across the UK.
 
@@ -53,7 +53,9 @@ the form and email address on `contact.html`, reached from the navigation.
 
 ## Still to do
 
-- [ ] Practice logo — the header currently uses a text wordmark
+- [x] Practice logo — in the header
+- [ ] Logo re-export with text converted to outlines (see
+      `assets/img/README.md`) — the current file relies on font fallback
 - [x] Accreditation marks — in place below the hero
 - [x] Portrait photograph — in place in the hero
 - [ ] Real contact details, fees and availability

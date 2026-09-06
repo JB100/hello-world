@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1956.72 211.03">
-  <defs>
-    <style>
-      .cls-1, .cls-2, .cls-3 {
-        fill: #2e2f2f;
-        font-family: HelveticaNeue-Thin, 'Helvetica Neue';
-        font-weight: 200;
-      }
+<!--
+  Kat Lech Psychotherapy wordmark.
 
-      .cls-4 {
-        font-size: 180px;
-      }
+  The supplied export used live text in Helvetica Neue with each letter group
+  pinned to an absolute x-coordinate. On any machine without that font (all
+  Windows, most Android) it fell back to a serif and "Psychotherapy" split
+  into "Psychothe rapy". The original export is preserved in git history.
 
-      .cls-2 {
-        letter-spacing: -.02em;
-      }
+  This version keeps the same wordmark but survives font substitution: one
+  flowing text run instead of pinned fragments, a fallback stack, and
+  textLength so the mark occupies the same width whichever font resolves.
 
-      .cls-3 {
-        letter-spacing: -.03em;
-      }
-
-      .cls-5 {
-        font-family: HelveticaNeue-Bold, 'Helvetica Neue';
-        font-weight: 700;
-      }
-
-      .cls-6 {
-        font-family: Helvetica-Light, Helvetica;
-        font-weight: 300;
-      }
-    </style>
-  </defs>
-  <text class="cls-4" transform="translate(6.42 166.09)"><tspan class="cls-5" x="0" y="0">Kat Lech</tspan><tspan class="cls-6" x="766.79" y="0"> </tspan><tspan class="cls-3" x="816.83" y="0">P</tspan><tspan class="cls-1" x="917.8" y="0">sychothe</tspan><tspan class="cls-2" x="1601.25" y="0">r</tspan><tspan class="cls-1" x="1647.7" y="0">apy</tspan></text>
+  The proper fix is a re-export with the text converted to outlines. Drop that
+  file in here under the same name and none of the markup needs to change.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1956.72 211.03"
+     role="img" aria-label="Kat Lech Psychotherapy">
+  <text x="6.42" y="166.09" fill="#2e2f2f" font-size="180"
+        font-family="'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif"
+        textLength="1943" lengthAdjust="spacingAndGlyphs"><tspan font-weight="700">Kat Lech</tspan><tspan font-weight="300"> Psychotherapy</tspan></text>
 </svg>
