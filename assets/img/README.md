@@ -10,6 +10,10 @@
 | `axa-health.svg`        | AXA Health logo                  | 160 x 72    |
 | `aviva.svg`             | Aviva logo                       | 957 x 688   |
 | `wpa.svg`               | WPA logo                         | 96 x 72     |
+| `kat-cbt-emdr-favicon.webp` | Icon master                  | 512 x 512   |
+| `favicon.ico`           | Browser tab icon (16/32/48)      | multi       |
+| `favicon-32.png`        | Browser tab icon                 | 32 x 32     |
+| `apple-touch-icon.png`  | Home-screen icon                 | 180 x 180   |
 
 The `width` and `height` attributes on each `<img>` match these dimensions.
 They reserve the space while the file loads so the page doesn't jump — if you
@@ -53,3 +57,13 @@ case-sensitive hosting.
 
 These are third-party trademarks used to show insurer approval. Keep them as
 supplied — do not recolour or redraw them.
+
+## Favicons
+
+The uploaded icon was the full square portrait at 3276px and 612 KB. At
+browser-tab size a whole portrait turns to mush, so the icons are cropped to
+head and shoulders first, then downscaled. The master is kept at 512px for
+regenerating them.
+
+To regenerate after replacing the master, crop square to the face and export
+32px PNG, 180px PNG and a multi-size ICO.
