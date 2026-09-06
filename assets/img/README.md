@@ -33,18 +33,15 @@ panels can go.
 
 ## The logo
 
-The current lockup stacks "Kat Lech" over a tracked-out "PSYCHOTHERAPY". It
-arrived as live text — Didot for the name, Helvetica Neue for the strapline —
-with each letter group pinned to an x-coordinate calculated for those fonts.
-Didot ships only on macOS, so everywhere else the name fell back to a default
-serif and broke apart into "Kat Le ch".
+The lockup stacks "Kat Lech" over a tracked-out "PSYCHOTHERAPY". It is supplied
+with the text converted to outlines, so it renders identically everywhere with
+no font dependency.
 
-It has been rewritten so each line is one flowing text run with a fallback
-stack and a fixed `textLength`, holding its width whichever font resolves.
-The strapline's tracking now comes from `textLength` rather than per-letter
-letter-spacing, which is what makes it survive substitution.
+An earlier upload of this lockup used live text — Didot for the name, Helvetica
+Neue for the strapline. Didot ships only on macOS, so everywhere else the name
+fell back to a default serif and broke apart into "Kat Le ch". If the logo is
+ever re-exported, apply Type > Create Outlines before saving.
 
-**The proper fix is a re-export with Type > Create Outlines applied**, which
-embeds the letterforms as shapes and removes the font dependency entirely.
-Save it over this file; no markup changes needed. Then regenerate the white
-version by swapping both `fill` values to `#f2f6f3`.
+`kat-lech-psychotherapy-logo-white.svg` is the light version used in the footer.
+It is the same file with a `path { fill: #f2f6f3 }` rule added. Regenerate it
+the same way whenever the dark one changes.
