@@ -7,6 +7,9 @@
 | `emdr-uk.jpg`           | EMDR UK mark                     | 600 x 325   |
 | `kat-lech-psychotherapy-logo.svg` | Header wordmark        | 1957 x 211  |
 | `kat-lech-psychotherapy-logo-white.svg` | Footer wordmark  | 1957 x 211  |
+| `axa-health.svg`        | AXA Health logo                  | 160 x 72    |
+| `aviva.svg`             | Aviva logo                       | 957 x 688   |
+| `wpa.svg`               | WPA logo                         | 96 x 72     |
 
 The `width` and `height` attributes on each `<img>` match these dimensions.
 They reserve the space while the file loads so the page doesn't jump — if you
@@ -36,3 +39,17 @@ One small thing in the artwork: the "Kat Lech" paths carry no fill attribute so
 they render pure black, while the "Psychotherapy" paths are `#2e2f2f`. The
 difference is invisible at header size but would show on anything large, like
 print or a social banner.
+
+## Insurer logos
+
+The three marks have very different proportions, so they sit in equal-width
+panels at a common 40px height rather than being scaled to match each other.
+
+`aviva.svg` arrived with fixed `width` and `height` attributes but no
+`viewBox`, which means CSS sizing crops it instead of scaling it. A viewBox
+derived from its own dimensions has been added. It also arrived as
+`Aviva.svg`; it is now lower case, because a capital in a filename breaks on
+case-sensitive hosting.
+
+These are third-party trademarks used to show insurer approval. Keep them as
+supplied — do not recolour or redraw them.

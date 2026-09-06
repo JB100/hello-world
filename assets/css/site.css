@@ -563,11 +563,29 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 .insurers li {
-  padding: var(--space-xs) var(--space-m);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-width: 9.5rem;
+  padding: var(--space-m);
   background: var(--surface);
   border: 1px solid var(--rule);
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+}
+
+/* One slot per insurer so three logos of very different proportions read as
+   a set. AXA is more than twice as wide as it is tall; WPA is nearly square. */
+.insurers img {
+  height: 40px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+}
+
+.insurers span {
+  font-size: var(--step-small);
+  color: var(--ink-muted);
 }
 
 /* --------------------------------------------------------------------------
@@ -905,11 +923,14 @@ ul, ol { margin: 0; padding: 0; }
    own panel rather than being dropped onto a coloured band.
    -------------------------------------------------------------------------- */
 
+/* Sits under the portrait, so it centres on the photograph above it rather
+   than hanging off the left edge. */
 .accreditation {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xs);
   margin-top: var(--space-s);
 }

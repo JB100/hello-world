@@ -56,14 +56,13 @@ bot submissions.
 ## Still to do
 
 - [x] Practice logo — in the header
-- [ ] Logo re-export with text converted to outlines (see
-      `assets/img/README.md`) — the current file relies on font fallback
+- [x] Logo re-exported with text converted to outlines
 - [x] Accreditation marks — in place below the hero
 - [x] Portrait photograph — in place in the hero
 - [ ] Session fees, availability and typical response time
 - [x] Testimonials — eleven, live on the testimonials page
 - [ ] Formspree form ID — replace `YOUR_FORM_ID` in `contact.html`
-- [ ] Insurer logos (AXA Health, Aviva, WPA) — artwork needed
+- [x] Insurer logos — on the insurance page and the home page
 - [ ] Privacy policy page (`privacy.html` is linked but not yet written)
 
 ## Accessibility
