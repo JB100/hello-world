@@ -14,6 +14,7 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies, no framework.
 | `how-can-i-help.html` | How can I help   |
 | `insurance.html`      | Insurance        |
 | `testimonials.html`   | Testimonials     |
+| `about.html`          | About Kat        |
 | `contact.html`        | Contact          |
 
 ## Running it locally
@@ -59,10 +60,12 @@ bot submissions.
 - [x] Logo re-exported with text converted to outlines
 - [x] Accreditation marks — in place below the hero
 - [x] Portrait photograph — in place in the hero
-- [ ] Session fees, availability and typical response time
 - [x] Testimonials — eleven, live on the testimonials page
 - [ ] Formspree form ID — replace `YOUR_FORM_ID` in `contact.html`
 - [x] Insurer logos — on the insurance page and the home page
+- [x] Fees and response time — on the contact page
+- [ ] Logo re-export with text converted to outlines — the current
+      lockup depends on Didot and Helvetica Neue (see `assets/img/README.md`)
 - [ ] Privacy policy page (`privacy.html` is linked but not yet written)
 
 ## Accessibility

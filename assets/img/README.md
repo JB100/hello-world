@@ -5,8 +5,9 @@
 | `kat-portrait.jpg`      | Portrait photograph for the hero | 1400 x 2100 |
 | `babcp-accredited.jpg`  | BABCP Accredited mark            | 600 x 600   |
 | `emdr-uk.jpg`           | EMDR UK mark                     | 600 x 325   |
-| `kat-lech-psychotherapy-logo.svg` | Header wordmark        | 1957 x 211  |
-| `kat-lech-psychotherapy-logo-white.svg` | Footer wordmark  | 1957 x 211  |
+| `kat-lech-psychotherapy-logo.svg` | Header wordmark        | 846 x 253   |
+| `kat-lech-psychotherapy-logo-white.svg` | Footer wordmark  | 846 x 253   |
+| `kat-lech-about.jpg`    | About page photograph            | 900 x 900   |
 | `axa-health.svg`        | AXA Health logo                  | 160 x 72    |
 | `aviva.svg`             | Aviva logo                       | 957 x 688   |
 | `wpa.svg`               | WPA logo                         | 96 x 72     |
@@ -32,38 +33,18 @@ panels can go.
 
 ## The logo
 
-The wordmark is now supplied with the text converted to outlines, so it renders
-identically everywhere with no font dependency.
+The current lockup stacks "Kat Lech" over a tracked-out "PSYCHOTHERAPY". It
+arrived as live text — Didot for the name, Helvetica Neue for the strapline —
+with each letter group pinned to an x-coordinate calculated for those fonts.
+Didot ships only on macOS, so everywhere else the name fell back to a default
+serif and broke apart into "Kat Le ch".
 
-`kat-lech-psychotherapy-logo-white.svg` is the light version used in the footer.
-It is generated from the dark one by setting every path fill to `#f2f6f3`. If
-the dark logo is ever replaced, regenerate the white one the same way.
+It has been rewritten so each line is one flowing text run with a fallback
+stack and a fixed `textLength`, holding its width whichever font resolves.
+The strapline's tracking now comes from `textLength` rather than per-letter
+letter-spacing, which is what makes it survive substitution.
 
-One small thing in the artwork: the "Kat Lech" paths carry no fill attribute so
-they render pure black, while the "Psychotherapy" paths are `#2e2f2f`. The
-difference is invisible at header size but would show on anything large, like
-print or a social banner.
-
-## Insurer logos
-
-The three marks have very different proportions, so they sit in equal-width
-panels at a common 40px height rather than being scaled to match each other.
-
-`aviva.svg` arrived with fixed `width` and `height` attributes but no
-`viewBox`, which means CSS sizing crops it instead of scaling it. A viewBox
-derived from its own dimensions has been added. It also arrived as
-`Aviva.svg`; it is now lower case, because a capital in a filename breaks on
-case-sensitive hosting.
-
-These are third-party trademarks used to show insurer approval. Keep them as
-supplied — do not recolour or redraw them.
-
-## Favicons
-
-The uploaded icon was the full square portrait at 3276px and 612 KB. At
-browser-tab size a whole portrait turns to mush, so the icons are cropped to
-head and shoulders first, then downscaled. The master is kept at 512px for
-regenerating them.
-
-To regenerate after replacing the master, crop square to the face and export
-32px PNG, 180px PNG and a multi-size ICO.
+**The proper fix is a re-export with Type > Create Outlines applied**, which
+embeds the letterforms as shapes and removes the font dependency entirely.
+Save it over this file; no markup changes needed. Then regenerate the white
+version by swapping both `fill` values to `#f2f6f3`.

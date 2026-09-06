@@ -1,82 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846.34 252.63">
-  <defs>
-    <style>
-      .cls-1 {
-        font-family: HelveticaNeue-Thin, 'Helvetica Neue';
-        font-size: 50px;
-        font-weight: 200;
-      }
+<!--
+  Kat Lech Psychotherapy wordmark, stacked lockup.
 
-      .cls-2 {
-        letter-spacing: .49em;
-      }
+  The supplied export used live text — Didot for the name, Helvetica Neue for
+  the strapline — with each letter pinned to an x-coordinate calculated for
+  those fonts. Didot ships only on macOS, so on Windows, Android and Linux the
+  name fell back to a default serif and broke apart, rendering as "Kat Le ch".
 
-      .cls-3 {
-        letter-spacing: .49em;
-      }
+  This version keeps the same lockup but survives font substitution: each line
+  is one flowing text run with a fallback stack and a fixed textLength, so it
+  occupies the same width whichever font resolves. The strapline's tracking is
+  produced by textLength rather than by per-letter letter-spacing, which is
+  what makes it hold together.
 
-      .cls-4 {
-        letter-spacing: .51em;
-      }
-
-      .cls-5 {
-        letter-spacing: .49em;
-      }
-
-      .cls-6 {
-        letter-spacing: .49em;
-      }
-
-      .cls-7 {
-        letter-spacing: .44em;
-      }
-
-      .cls-8 {
-        letter-spacing: .45em;
-      }
-
-      .cls-9 {
-        letter-spacing: .46em;
-      }
-
-      .cls-10 {
-        letter-spacing: .48em;
-      }
-
-      .cls-11 {
-        letter-spacing: .48em;
-      }
-
-      .cls-12 {
-        letter-spacing: .5em;
-      }
-
-      .cls-13 {
-        letter-spacing: .49em;
-      }
-
-      .cls-14 {
-        letter-spacing: .5em;
-      }
-
-      .cls-15 {
-        font-size: 200px;
-      }
-
-      .cls-16, .cls-17 {
-        font-family: Didot, Didot;
-      }
-
-      .cls-18 {
-        font-family: Didot-Bold, Didot;
-        font-weight: 700;
-      }
-
-      .cls-17 {
-        letter-spacing: 0em;
-      }
-    </style>
-  </defs>
-  <text transform="translate(12.26 161.61)"><tspan class="cls-15"><tspan class="cls-16" x="0" y="0">Kat Le</tspan><tspan class="cls-17" x="603.6" y="0">c</tspan><tspan class="cls-16" x="697.79" y="0">h</tspan><tspan class="cls-18" x="819.99" y="0"> </tspan></tspan><tspan class="cls-1"><tspan class="cls-10" x="64.36" y="73">P</tspan><tspan class="cls-9" x="118" y="73">S</tspan><tspan class="cls-7" x="172.53" y="73">Y</tspan><tspan class="cls-3" x="223.33" y="73">C</tspan><tspan class="cls-5" x="282.94" y="73">H</tspan><tspan class="cls-8" x="341.13" y="73">O</tspan><tspan class="cls-14" x="400.55" y="73">T</tspan><tspan class="cls-6" x="451.31" y="73">H</tspan><tspan class="cls-11" x="509.52" y="73">E</tspan><tspan class="cls-4" x="561.64" y="73">R</tspan><tspan class="cls-13" x="618.67" y="73">A</tspan><tspan class="cls-2" x="673.05" y="73">P</tspan><tspan class="cls-12" x="726.94" y="73">Y</tspan></tspan></text>
+  The proper fix is a re-export from Illustrator with Type > Create Outlines
+  applied. Save it over this file and no markup needs to change.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846.34 252.63"
+     role="img" aria-label="Kat Lech Psychotherapy">
+  <text x="12.26" y="161.61" fill="#2e2f2f" font-size="200"
+        font-family="Didot, 'Bodoni 72', 'Playfair Display', Georgia, 'Times New Roman', serif"
+        textLength="820" lengthAdjust="spacingAndGlyphs">Kat Lech</text>
+  <text x="76.62" y="234.61" fill="#2e2f2f" font-size="50" font-weight="300"
+        font-family="'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif"
+        textLength="723" lengthAdjust="spacing">PSYCHOTHERAPY</text>
 </svg>
