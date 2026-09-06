@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1956.72 211.03">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #2e2f2f;
+        font-family: HelveticaNeue-Thin, 'Helvetica Neue';
+        font-weight: 200;
+      }
+
+      .cls-4 {
+        font-size: 180px;
+      }
+
+      .cls-2 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-5 {
+        font-family: HelveticaNeue-Bold, 'Helvetica Neue';
+        font-weight: 700;
+      }
+
+      .cls-6 {
+        font-family: Helvetica-Light, Helvetica;
+        font-weight: 300;
+      }
+    </style>
+  </defs>
+  <text class="cls-4" transform="translate(6.42 166.09)"><tspan class="cls-5" x="0" y="0">Kat Lech</tspan><tspan class="cls-6" x="766.79" y="0"> </tspan><tspan class="cls-3" x="816.83" y="0">P</tspan><tspan class="cls-1" x="917.8" y="0">sychothe</tspan><tspan class="cls-2" x="1601.25" y="0">r</tspan><tspan class="cls-1" x="1647.7" y="0">apy</tspan></text>
+</svg>
