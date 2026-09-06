@@ -36,16 +36,21 @@ Every colour, typeface and spacing value is a custom property at the top of
 changes everywhere.
 
 ```css
---ground:    #f8f6f1;  /* page background   */
---surface:   #ffffff;  /* raised panels     */
---oat:       #e9e4d8;  /* quiet section bands */
---clay:      #bfac9b;  /* rules and detail — decorative only, fails contrast for text */
---ink:       #262523;  /* text, dark panels, primary buttons */
---ink-muted: #6a645c;  /* secondary text — 6.5:1 on --ground, passes WCAG AA */
+--ground:    #fbf8f6;  /* page background — warm off-white */
+--surface:   #ffffff;  /* raised panels, form fields */
+--blush:     #f7e7e3;  /* soft rose section band */
+--sage:      #e4ede4;  /* soft green section band */
+--sky:       #e1e9f1;  /* soft blue section band */
+--rose:      #d9a9a2;  /* rules and detail — decorative only, fails contrast for text */
+--ink:       #38333d;  /* text, deep panels — aubergine, not black */
+--ink-muted: #5f5866;  /* secondary text — 5.6:1 or better on every band above */
 ```
 
-Typefaces are Fraunces (headings) and Figtree (body), loaded from Google
+Typefaces are Literata (headings) and Figtree (body), loaded from Google
 Fonts in each page's `<head>`.
+
+The site has no booking buttons or calendar by design. Contact runs through
+the form and email address on `contact.html`, reached from the navigation.
 
 ## Still to do
 

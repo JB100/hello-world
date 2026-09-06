@@ -5,21 +5,24 @@
    ========================================================================== */
 
 :root {
-  /* Colour — sampled from the reference and warmed for a therapy context.
-     --clay is decorative only: it does not meet contrast ratios for text. */
-  --ground:      #f8f6f1;
+  /* Colour — pastel grounds, deep aubergine ink. Saturation is kept low so
+     the page reads as calm rather than as a beauty brand; all colour lives
+     in the backgrounds, never in the text. --rose is decorative only. */
+  --ground:      #fbf8f6;
   --surface:     #ffffff;
-  --oat:         #e9e4d8;
-  --clay:        #bfac9b;
-  --ink:         #262523;
-  --ink-muted:   #635e56;
-  --rule:        #dcd6c9;
-  --error:       #8f2f22;
-  --ink-on-dark: #f4f1ea;
-  --muted-on-dark: #b8b2a6;
+  --blush:       #f7e7e3;
+  --sage:        #e4ede4;
+  --sky:         #e1e9f1;
+  --rose:        #d9a9a2;
+  --ink:         #38333d;
+  --ink-muted:   #5f5866;
+  --rule:        #ebe0dc;
+  --error:       #9a2f2a;
+  --ink-on-dark: #f7f2f4;
+  --muted-on-dark: #c3bbc7;
 
   /* Type */
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-display: "Literata", "Iowan Old Style", Georgia, serif;
   --font-body: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --step-display: clamp(2.4rem, 1.55rem + 3.9vw, 4.35rem);
@@ -40,7 +43,7 @@
   --space-3xl: 8.4375rem;
 
   /* Height of the sticky masthead plus a little breathing room. */
-  --header-height: 7.5rem;
+  --header-height: 6rem;
 
   --measure: 62ch;
   --measure-tight: 48ch;
@@ -134,7 +137,9 @@ ul, ol { margin: 0; padding: 0; }
 .section { padding-block: var(--space-2xl); }
 .section-tight { padding-block: var(--space-xl); }
 
-.band-oat { background: var(--oat); }
+.band-blush { background: var(--blush); }
+.band-sage { background: var(--sage); }
+.band-sky { background: var(--sky); }
 .band-ink { background: var(--ink); color: var(--ink-on-dark); }
 .band-ink h2, .band-ink h3 { color: var(--ink-on-dark); }
 
@@ -173,7 +178,7 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--ink);
   color: var(--ink-on-dark);
 }
-.btn-primary:hover { background: #3b3936; }
+.btn-primary:hover { background: #4c4653; }
 
 .btn-secondary {
   background: transparent;
@@ -191,7 +196,7 @@ ul, ol { margin: 0; padding: 0; }
 .link-underline {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid var(--clay);
+  border-bottom: 1px solid var(--rose);
   padding-bottom: 2px;
   transition: border-color 0.25s var(--ease);
 }
@@ -210,7 +215,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .topstrip {
   height: 10px;
-  background: var(--clay);
+  background: var(--rose);
 }
 
 .masthead {
@@ -284,7 +289,7 @@ ul, ol { margin: 0; padding: 0; }
   transition: border-color 0.25s var(--ease);
 }
 .nav-list a:hover,
-.nav-list a[aria-current="page"] { border-color: var(--clay); }
+.nav-list a[aria-current="page"] { border-color: var(--rose); }
 
 @media (max-width: 62rem) {
   .nav {
@@ -341,8 +346,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .hero h1 {
   max-width: 18ch;
-  font-variation-settings: "SOFT" 20, "WONK" 0;
-}
+  }
 
 .hero-sub {
   margin-top: var(--space-m);
@@ -361,7 +365,7 @@ ul, ol { margin: 0; padding: 0; }
   max-width: 26ch;
 }
 
-.hero .actions { margin-top: var(--space-l); }
+.hero-next { margin-top: var(--space-l); }
 
 .credentials {
   list-style: none;
@@ -382,13 +386,15 @@ ul, ol { margin: 0; padding: 0; }
   bottom: -1px;
   width: 100%;
   height: clamp(40px, 6vw, 90px);
-  fill: var(--oat);
+  /* Matches the band immediately below, so the curve reads as that section
+     rising rather than as a stripe of its own. */
+  fill: var(--sage);
 }
 
 /* Image placeholders — sized so real photographs drop straight in. */
 .frame {
   position: relative;
-  background: var(--oat);
+  background: var(--blush);
   border: 1px solid var(--rule);
 }
 
@@ -417,7 +423,7 @@ ul, ol { margin: 0; padding: 0; }
    it loads. */
 .photo {
   border: 1px solid var(--rule);
-  background: var(--oat);
+  background: var(--blush);
 }
 
 .photo img {
@@ -429,7 +435,7 @@ ul, ol { margin: 0; padding: 0; }
    Intro
    -------------------------------------------------------------------------- */
 
-.intro { background: var(--oat); }
+.intro { background: var(--sage); }
 
 .intro-grid {
   display: grid;
@@ -542,7 +548,7 @@ ul, ol { margin: 0; padding: 0; }
   top: 0.7em;
   width: 14px;
   height: 1px;
-  background: var(--clay);
+  background: var(--rose);
 }
 
 .credential-list strong {
@@ -577,7 +583,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .closing { text-align: center; }
 .closing p { margin-inline: auto; }
-.closing .actions { justify-content: center; margin-top: var(--space-l); }
+.closing-next { margin-top: var(--space-l); }
 
 /* --------------------------------------------------------------------------
    Footer
@@ -594,7 +600,7 @@ ul, ol { margin: 0; padding: 0; }
   display: grid;
   gap: var(--space-l);
   padding-bottom: var(--space-l);
-  border-bottom: 1px solid rgba(244, 241, 234, 0.16);
+  border-bottom: 1px solid rgba(247, 242, 244, 0.18);
 }
 
 @media (min-width: 48rem) {
@@ -685,7 +691,9 @@ ul, ol { margin: 0; padding: 0; }
 
 .step p { color: var(--ink-muted); }
 
-.band-ink .step { border-color: rgba(244, 241, 234, 0.2); }
+.band-ink .tag-heading { color: var(--ink-on-dark); }
+.band-ink .kicker { color: var(--muted-on-dark); }
+.band-ink .step { border-color: rgba(247, 242, 244, 0.22); }
 .band-ink .step p,
 .band-ink .step h4::before { color: var(--muted-on-dark); }
 
@@ -705,7 +713,15 @@ ul, ol { margin: 0; padding: 0; }
   font-size: var(--step-small);
 }
 
-.band-oat .taglist li { background: var(--ground); }
+.band-ink .taglist li {
+  background: transparent;
+  border-color: rgba(247, 242, 244, 0.28);
+  color: var(--ink-on-dark);
+}
+
+.band-blush .taglist li,
+.band-sage .taglist li,
+.band-sky .taglist li { background: var(--ground); }
 
 .tag-heading {
   font-family: var(--font-body);
@@ -752,7 +768,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .notice {
   padding: var(--space-m);
-  border: 1px dashed var(--clay);
+  border: 1px dashed var(--rose);
   background: var(--surface);
   font-size: var(--step-small);
   color: var(--ink-muted);
