@@ -602,6 +602,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .site-footer {
   background: var(--ink);
+  border-top: 3px solid var(--accent);
   color: var(--muted-on-dark);
   padding-block: var(--space-xl) var(--space-l);
   font-size: var(--step-small);
@@ -661,7 +662,10 @@ ul, ol { margin: 0; padding: 0; }
    -------------------------------------------------------------------------- */
 
 .therapy { padding-block: var(--space-2xl); scroll-margin-top: 6rem; }
-.therapy + .therapy { border-top: 1px solid var(--rule); }
+
+/* Where two sections share the same ground, a rule does the separating that
+   a change of band colour does elsewhere. */
+.section-divided { border-bottom: 1px solid var(--rule); }
 
 .therapy-head { max-width: var(--measure); margin-bottom: var(--space-l); }
 
@@ -673,47 +677,82 @@ ul, ol { margin: 0; padding: 0; }
   margin-top: var(--space-2xs);
 }
 
-/* Steps are a genuine sequence, so they are numbered. */
+/* Steps — the one numbered component on the site. The content really is a
+   sequence, so the numeral does work rather than decoration: it tells you
+   how many stages there are and where you are in them.
+
+   One definition serves every use: the therapy pages on plain ground, the
+   EMDR section on the blue band, the ADHD section on the dark band, and the
+   insurance process. Only the colours change between them. */
 .steps {
   list-style: none;
   counter-reset: step;
   display: grid;
-  gap: var(--space-m);
+  gap: var(--space-s);
   margin-top: var(--space-l);
 }
 
 @media (min-width: 52rem) {
-  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-l); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-m); }
 }
 
 .step {
   counter-increment: step;
-  padding-top: var(--space-s);
-  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--space-xs) var(--space-s);
+  align-content: start;
+  padding: var(--space-m);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+/* The numeral is the only circle on the site. It earns the shape by being a
+   counter rather than a container. */
+.step::before {
+  content: counter(step);
+  grid-column: 1;
+  grid-row: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .step h4 {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   font-size: var(--step-h3);
-  margin-bottom: var(--space-2xs);
 }
 
-.step h4::before {
-  content: "Step " counter(step);
-  display: block;
-  font-family: var(--font-body);
-  font-size: var(--step-small);
-  letter-spacing: 0.04em;
+.step p {
+  grid-column: 2;
+  margin-bottom: 0;
   color: var(--ink-muted);
-  margin-bottom: var(--space-2xs);
+  max-width: none;
 }
 
-.step p { color: var(--ink-muted); }
+.step p + p { margin-top: var(--space-xs); }
 
-.band-ink .tag-heading { color: var(--ink-on-dark); }
-.band-ink .kicker { color: var(--muted-on-dark); }
-.band-ink .step { border-color: rgba(247, 242, 244, 0.22); }
-.band-ink .step p,
-.band-ink .step h4::before { color: var(--muted-on-dark); }
+/* On the blue band a white card would be the only pure white on the page,
+   so it takes the page ground instead. */
+.band-sky .step { background: var(--ground); border-color: #cfdce6; }
+
+.band-ink .step {
+  background: rgba(242, 246, 243, 0.07);
+  border-color: rgba(242, 246, 243, 0.2);
+}
+
+.band-ink .step h4 { color: var(--ink-on-dark); }
+.band-ink .step p { color: var(--muted-on-dark); }
+.band-ink .step::before { background: var(--ink-on-dark); color: var(--ink); }
 
 /* Tag lists — "can be helpful for" groupings */
 .taglist {
@@ -964,7 +1003,3 @@ ul, ol { margin: 0; padding: 0; }
   height: 1px;
   overflow: hidden;
 }
-
-/* The crisis notice sat on the same dark ground as the footer, so the two
-   read as one block. A pale band and a rule separate them. */
-.crisis { border-bottom: 3px solid var(--accent); }
