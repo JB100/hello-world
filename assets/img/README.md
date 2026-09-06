@@ -6,6 +6,7 @@
 | `babcp-accredited.jpg`  | BABCP Accredited mark            | 600 x 600   |
 | `emdr-uk.jpg`           | EMDR UK mark                     | 600 x 325   |
 | `kat-lech-psychotherapy-logo.svg` | Header wordmark        | 1957 x 211  |
+| `kat-lech-psychotherapy-logo-white.svg` | Footer wordmark  | 1957 x 211  |
 
 The `width` and `height` attributes on each `<img>` match these dimensions.
 They reserve the space while the file loads so the page doesn't jump — if you
@@ -22,17 +23,16 @@ than transparency, so each is displayed inside its own white panel. If you can
 get transparent PNG or SVG versions from BABCP and EMDR UK, send them and the
 panels can go.
 
-## The logo needs a proper re-export
+## The logo
 
-The supplied SVG contained live text set in Helvetica Neue, with each letter
-group pinned to an absolute x-coordinate. Without that font installed — every
-Windows PC, most Android phones — it fell back to a serif and "Psychotherapy"
-split into "Psychothe rapy".
+The wordmark is now supplied with the text converted to outlines, so it renders
+identically everywhere with no font dependency.
 
-It has been rewritten as a single flowing text run with a fallback stack and a
-fixed `textLength`, so the mark holds together whichever font resolves. Macs
-render true Helvetica Neue; elsewhere Arial stands in.
+`kat-lech-psychotherapy-logo-white.svg` is the light version used in the footer.
+It is generated from the dark one by setting every path fill to `#f2f6f3`. If
+the dark logo is ever replaced, regenerate the white one the same way.
 
-The correct fix is a re-export from Illustrator with **Type > Create Outlines**
-applied before saving. That embeds the letterforms as shapes and removes any
-dependence on fonts. Save it over the existing file — no markup changes needed.
+One small thing in the artwork: the "Kat Lech" paths carry no fill attribute so
+they render pure black, while the "Psychotherapy" paths are `#2e2f2f`. The
+difference is invisible at header size but would show on anything large, like
+print or a social banner.
