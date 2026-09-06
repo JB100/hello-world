@@ -1,0 +1,814 @@
+/* ==========================================================================
+   Katlech — CBT & EMDR Psychotherapy
+   Design tokens first, then base, layout, components, sections, utilities.
+   Every brand value lives in :root — change it there and it changes site-wide.
+   ========================================================================== */
+
+:root {
+  /* Colour — sampled from the reference and warmed for a therapy context.
+     --clay is decorative only: it does not meet contrast ratios for text. */
+  --ground:      #f8f6f1;
+  --surface:     #ffffff;
+  --oat:         #e9e4d8;
+  --clay:        #bfac9b;
+  --ink:         #262523;
+  --ink-muted:   #6a645c;
+  --rule:        #dcd6c9;
+  --ink-on-dark: #f4f1ea;
+  --muted-on-dark: #b8b2a6;
+
+  /* Type */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --step-display: clamp(2.4rem, 1.55rem + 3.9vw, 4.35rem);
+  --step-h2:      clamp(1.85rem, 1.35rem + 2.1vw, 2.9rem);
+  --step-h3:      clamp(1.3rem, 1.13rem + 0.75vw, 1.7rem);
+  --step-lead:    clamp(1.15rem, 1.06rem + 0.42vw, 1.4rem);
+  --step-body:    clamp(1rem, 0.98rem + 0.13vw, 1.07rem);
+  --step-small:   0.875rem;
+
+  /* Spacing — a 1.5 ratio scale */
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-s:   1.125rem;
+  --space-m:   1.6875rem;
+  --space-l:   2.5rem;
+  --space-xl:  3.75rem;
+  --space-2xl: 5.625rem;
+  --space-3xl: 8.4375rem;
+
+  --measure: 62ch;
+  --measure-tight: 48ch;
+  --shell: 74rem;
+  --shell-narrow: 46rem;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 { font-size: var(--step-display); }
+h2 { font-size: var(--step-h2); }
+h3 { font-size: var(--step-h3); line-height: 1.2; }
+
+p { margin: 0 0 var(--space-s); max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; }
+
+img, svg { display: block; max-width: 100%; }
+
+ul, ol { margin: 0; padding: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: var(--space-s);
+  z-index: 100;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--ink);
+  color: var(--ink-on-dark);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* --------------------------------------------------------------------------
+   Layout primitives
+   -------------------------------------------------------------------------- */
+
+.shell {
+  width: min(100% - 2.5rem, var(--shell));
+  margin-inline: auto;
+}
+
+.shell-narrow {
+  width: min(100% - 2.5rem, var(--shell-narrow));
+  margin-inline: auto;
+}
+
+.section { padding-block: var(--space-2xl); }
+.section-tight { padding-block: var(--space-xl); }
+
+.band-oat { background: var(--oat); }
+.band-ink { background: var(--ink); color: var(--ink-on-dark); }
+.band-ink h2, .band-ink h3 { color: var(--ink-on-dark); }
+
+.lead {
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  max-width: var(--measure-tight);
+}
+
+.prose > * + * { margin-top: var(--space-s); }
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons and links
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.95em 1.9em;
+  font-family: var(--font-body);
+  font-size: var(--step-small);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--ink-on-dark);
+}
+.btn-primary:hover { background: #3b3936; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-secondary:hover { background: var(--ink); color: var(--ink-on-dark); }
+
+.btn-on-dark {
+  background: var(--ink-on-dark);
+  color: var(--ink);
+  border-color: var(--ink-on-dark);
+}
+.btn-on-dark:hover { background: transparent; color: var(--ink-on-dark); }
+
+.link-underline {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--clay);
+  padding-bottom: 2px;
+  transition: border-color 0.25s var(--ease);
+}
+.link-underline:hover { border-color: currentColor; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.topstrip {
+  height: 10px;
+  background: var(--clay);
+}
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ground);
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  padding-block: var(--space-s);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.wordmark span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  margin-top: 4px;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--rule);
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  font-size: var(--step-small);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  list-style: none;
+}
+
+.nav-list a {
+  text-decoration: none;
+  font-size: var(--step-small);
+  letter-spacing: 0.02em;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease);
+}
+.nav-list a:hover,
+.nav-list a[aria-current="page"] { border-color: var(--clay); }
+
+@media (max-width: 62rem) {
+  .nav {
+    display: none;
+    position: absolute;
+    inset: 100% 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--ground);
+    border-bottom: 1px solid var(--rule);
+    padding: var(--space-s) 1.25rem var(--space-m);
+  }
+  .nav[data-open="true"] { display: flex; }
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-list a {
+    display: block;
+    padding-block: var(--space-s);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav .btn { margin-top: var(--space-s); text-align: center; }
+}
+
+@media (min-width: 62.0625rem) {
+  .nav-toggle { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Hero — typography led. The opening question is the strongest asset here.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  padding-block: var(--space-2xl) var(--space-3xl);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (min-width: 60rem) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+    gap: var(--space-2xl);
+  }
+}
+
+.hero h1 {
+  max-width: 18ch;
+  font-variation-settings: "SOFT" 20, "WONK" 0;
+}
+
+.hero-sub {
+  margin-top: var(--space-m);
+  font-size: var(--step-lead);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  max-width: 44ch;
+}
+
+.hero-affirm {
+  margin-top: var(--space-m);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-h3);
+  line-height: 1.35;
+  max-width: 26ch;
+}
+
+.hero .actions { margin-top: var(--space-l); }
+
+.credentials {
+  list-style: none;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-m);
+  font-size: var(--step-small);
+  color: var(--ink-muted);
+}
+
+.hero-curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: clamp(40px, 6vw, 90px);
+  fill: var(--oat);
+}
+
+/* Image placeholders — sized so real photographs drop straight in. */
+.frame {
+  position: relative;
+  background: var(--oat);
+  border: 1px solid var(--rule);
+}
+
+.frame::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: auto 0 0;
+  padding: var(--space-xs);
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.frame-portrait { aspect-ratio: 4 / 5; }
+.frame-wide { aspect-ratio: 3 / 2; }
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Intro
+   -------------------------------------------------------------------------- */
+
+.intro { background: var(--oat); }
+
+.intro-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 60rem) {
+  .intro-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Specialisms — alternating bands, not a card grid. Heavy subject matter
+   reads calmer with full-width room around it.
+   -------------------------------------------------------------------------- */
+
+.specialism { padding-block: var(--space-xl); }
+
+.specialism + .specialism { border-top: 1px solid var(--rule); }
+
+.specialism-grid {
+  display: grid;
+  gap: var(--space-l);
+  align-items: center;
+}
+
+@media (min-width: 60rem) {
+  .specialism-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2xl);
+  }
+  .specialism-reverse .specialism-media { order: -1; }
+}
+
+.specialism h3 {
+  font-size: var(--step-h2);
+  margin-bottom: var(--space-s);
+}
+
+/* --------------------------------------------------------------------------
+   Approaches — a definition list with hairlines. Not a sequence, so no
+   numbered markers.
+   -------------------------------------------------------------------------- */
+
+.approach-list {
+  list-style: none;
+  margin-top: var(--space-l);
+  border-top: 1px solid var(--rule);
+}
+
+.approach-item {
+  display: grid;
+  gap: var(--space-2xs) var(--space-l);
+  padding-block: var(--space-m);
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (min-width: 48rem) {
+  .approach-item {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+    align-items: baseline;
+  }
+}
+
+.approach-item h3 { font-size: var(--step-h3); }
+.approach-item p { color: var(--ink-muted); }
+
+/* --------------------------------------------------------------------------
+   Why work with me
+   -------------------------------------------------------------------------- */
+
+.why-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 60rem) {
+  .why-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+}
+
+.credential-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-s);
+}
+
+.credential-list li {
+  padding-left: var(--space-m);
+  position: relative;
+  color: var(--muted-on-dark);
+}
+
+.credential-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 14px;
+  height: 1px;
+  background: var(--clay);
+}
+
+.credential-list strong {
+  display: block;
+  color: var(--ink-on-dark);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Insurance
+   -------------------------------------------------------------------------- */
+
+.insurers {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-block: var(--space-l);
+}
+
+.insurers li {
+  padding: var(--space-xs) var(--space-m);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   Closing call to action
+   -------------------------------------------------------------------------- */
+
+.closing { text-align: center; }
+.closing p { margin-inline: auto; }
+.closing .actions { justify-content: center; margin-top: var(--space-l); }
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--ink);
+  color: var(--muted-on-dark);
+  padding-block: var(--space-xl) var(--space-l);
+  font-size: var(--step-small);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-l);
+  padding-bottom: var(--space-l);
+  border-bottom: 1px solid rgba(244, 241, 234, 0.16);
+}
+
+@media (min-width: 48rem) {
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.site-footer h2 {
+  font-size: 1.1rem;
+  color: var(--ink-on-dark);
+  margin-bottom: var(--space-s);
+}
+
+.site-footer a { color: var(--ink-on-dark); }
+
+.site-footer ul { list-style: none; display: grid; gap: var(--space-2xs); }
+
+.footer-base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s) var(--space-m);
+  justify-content: space-between;
+  padding-top: var(--space-m);
+}
+
+/* --------------------------------------------------------------------------
+   Inner page header
+   -------------------------------------------------------------------------- */
+
+.page-head {
+  padding-block: var(--space-xl) var(--space-l);
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-head h1 { max-width: 20ch; }
+
+.page-head .lead { margin-top: var(--space-m); }
+
+/* --------------------------------------------------------------------------
+   Therapy sections — one per approach, anchored for direct linking
+   -------------------------------------------------------------------------- */
+
+.therapy { padding-block: var(--space-2xl); scroll-margin-top: 6rem; }
+.therapy + .therapy { border-top: 1px solid var(--rule); }
+
+.therapy-head { max-width: var(--measure); margin-bottom: var(--space-l); }
+
+.therapy-head .kicker {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-lead);
+  color: var(--ink-muted);
+  margin-top: var(--space-2xs);
+}
+
+/* Steps are a genuine sequence, so they are numbered. */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+
+@media (min-width: 52rem) {
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-l); }
+}
+
+.step {
+  counter-increment: step;
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--rule);
+}
+
+.step h4 {
+  font-size: var(--step-h3);
+  margin-bottom: var(--space-2xs);
+}
+
+.step h4::before {
+  content: "Step " counter(step);
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--step-small);
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-2xs);
+}
+
+.step p { color: var(--ink-muted); }
+
+.band-ink .step { border-color: rgba(244, 241, 234, 0.2); }
+.band-ink .step p,
+.band-ink .step h4::before { color: var(--muted-on-dark); }
+
+/* Tag lists — "can be helpful for" groupings */
+.taglist {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-xs);
+  margin-top: var(--space-m);
+}
+
+.taglist li {
+  padding: 0.4em 0.95em;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  font-size: var(--step-small);
+}
+
+.band-oat .taglist li { background: var(--ground); }
+
+.tag-heading {
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  font-weight: 500;
+  margin-top: var(--space-l);
+}
+
+/* --------------------------------------------------------------------------
+   Testimonials
+   -------------------------------------------------------------------------- */
+
+.quote-grid {
+  display: grid;
+  gap: var(--space-l);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 52rem) {
+  .quote-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.quote {
+  margin: 0;
+  padding: var(--space-l);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.quote blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--step-h3);
+  line-height: 1.4;
+}
+
+.quote figcaption {
+  margin-top: var(--space-m);
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--rule);
+  font-size: var(--step-small);
+  color: var(--ink-muted);
+}
+
+.notice {
+  padding: var(--space-m);
+  border: 1px dashed var(--clay);
+  background: var(--surface);
+  font-size: var(--step-small);
+  color: var(--ink-muted);
+  margin-top: var(--space-l);
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+
+.contact-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 58rem) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+}
+
+.field { display: grid; gap: var(--space-2xs); margin-bottom: var(--space-m); }
+
+.field label { font-size: var(--step-small); font-weight: 500; }
+
+.field input,
+.field textarea,
+.field select {
+  font: inherit;
+  font-size: var(--step-body);
+  padding: 0.75em 0.9em;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  width: 100%;
+}
+
+.field textarea { min-height: 9rem; resize: vertical; }
+
+.field-note { font-size: var(--step-small); color: var(--ink-muted); }
+
+.detail-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+
+.detail-list dt,
+.detail-list .detail-label {
+  font-size: var(--step-small);
+  color: var(--ink-muted);
+  margin-bottom: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Motion — one entrance on load, nothing on scroll. For an audience living
+   with anxiety and ADHD, a page that stays still is the kinder default.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: enter 0.55s var(--ease) forwards;
+  }
+  .enter-1 { animation-delay: 0.02s; }
+  .enter-2 { animation-delay: 0.09s; }
+  .enter-3 { animation-delay: 0.16s; }
+  .enter-4 { animation-delay: 0.23s; }
+}
+
+@keyframes enter {
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
