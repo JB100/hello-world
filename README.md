@@ -36,14 +36,13 @@ Every colour, typeface and spacing value is a custom property at the top of
 changes everywhere.
 
 ```css
---ground:    #fbf8f6;  /* page background — warm off-white */
---surface:   #ffffff;  /* raised panels, form fields */
---blush:     #f7e7e3;  /* soft rose section band */
---sage:      #e4ede4;  /* soft green section band */
---sky:       #e1e9f1;  /* soft blue section band */
---rose:      #d9a9a2;  /* rules and detail — decorative only, fails contrast for text */
---ink:       #38333d;  /* text, deep panels — aubergine, not black */
---ink-muted: #5f5866;  /* secondary text — 5.6:1 or better on every band above */
+--ground:    #f8faf9;  /* page background — barely-green off-white */
+--surface:   #ffffff;  /* raised panels, form fields, accreditation marks */
+--sage:      #e3ede5;  /* pastel green section band */
+--sky:       #e0e9f0;  /* pastel blue section band */
+--accent:    #9cb9a6;  /* rules and detail — decorative only, fails contrast for text */
+--ink:       #2d3a3a;  /* text, deep panels — slate-teal, not black */
+--ink-muted: #54615e;  /* secondary text — 5.2:1 or better on every band above */
 ```
 
 Typefaces are Literata (headings) and Figtree (body), loaded from Google
@@ -54,7 +53,9 @@ the form and email address on `contact.html`, reached from the navigation.
 
 ## Still to do
 
-- [ ] Logo artwork — the header currently uses a text wordmark
+- [ ] Practice logo — the header currently uses a text wordmark
+- [ ] Accreditation marks — `assets/img/babcp-accredited.png` and
+      `assets/img/emdr-uk.png`; both are already referenced
 - [ ] Portrait photograph — save it as `assets/img/kat-portrait.jpg`
       (see `assets/img/README.md`); the hero already references it
 - [ ] Real contact details, fees and availability

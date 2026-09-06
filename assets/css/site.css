@@ -5,21 +5,20 @@
    ========================================================================== */
 
 :root {
-  /* Colour — pastel grounds, deep aubergine ink. Saturation is kept low so
-     the page reads as calm rather than as a beauty brand; all colour lives
-     in the backgrounds, never in the text. --rose is decorative only. */
-  --ground:      #fbf8f6;
+  /* Colour — pastel green and blue grounds over a deep slate-teal ink.
+     No pink anywhere. Colour sits in the backgrounds; text is never tinted.
+     --accent is decorative only and fails contrast for text. */
+  --ground:      #f8faf9;
   --surface:     #ffffff;
-  --blush:       #f7e7e3;
-  --sage:        #e4ede4;
-  --sky:         #e1e9f1;
-  --rose:        #d9a9a2;
-  --ink:         #38333d;
-  --ink-muted:   #5f5866;
-  --rule:        #ebe0dc;
+  --sage:        #e3ede5;
+  --sky:         #e0e9f0;
+  --accent:      #9cb9a6;
+  --ink:         #2d3a3a;
+  --ink-muted:   #54615e;
+  --rule:        #dde6e0;
   --error:       #9a2f2a;
-  --ink-on-dark: #f7f2f4;
-  --muted-on-dark: #c3bbc7;
+  --ink-on-dark: #f2f6f3;
+  --muted-on-dark: #b9c5c0;
 
   /* Type */
   --font-display: "Literata", "Iowan Old Style", Georgia, serif;
@@ -137,7 +136,6 @@ ul, ol { margin: 0; padding: 0; }
 .section { padding-block: var(--space-2xl); }
 .section-tight { padding-block: var(--space-xl); }
 
-.band-blush { background: var(--blush); }
 .band-sage { background: var(--sage); }
 .band-sky { background: var(--sky); }
 .band-ink { background: var(--ink); color: var(--ink-on-dark); }
@@ -178,7 +176,7 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--ink);
   color: var(--ink-on-dark);
 }
-.btn-primary:hover { background: #4c4653; }
+.btn-primary:hover { background: #3f5150; }
 
 .btn-secondary {
   background: transparent;
@@ -196,7 +194,7 @@ ul, ol { margin: 0; padding: 0; }
 .link-underline {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid var(--rose);
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
   transition: border-color 0.25s var(--ease);
 }
@@ -215,7 +213,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .topstrip {
   height: 10px;
-  background: var(--rose);
+  background: var(--accent);
 }
 
 .masthead {
@@ -289,7 +287,7 @@ ul, ol { margin: 0; padding: 0; }
   transition: border-color 0.25s var(--ease);
 }
 .nav-list a:hover,
-.nav-list a[aria-current="page"] { border-color: var(--rose); }
+.nav-list a[aria-current="page"] { border-color: var(--accent); }
 
 @media (max-width: 62rem) {
   .nav {
@@ -358,10 +356,11 @@ ul, ol { margin: 0; padding: 0; }
 
 .hero-affirm {
   margin-top: var(--space-m);
-  font-family: var(--font-display);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-weight: 500;
   font-size: var(--step-h3);
-  line-height: 1.35;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   max-width: 26ch;
 }
 
@@ -394,7 +393,7 @@ ul, ol { margin: 0; padding: 0; }
 /* Image placeholders — sized so real photographs drop straight in. */
 .frame {
   position: relative;
-  background: var(--blush);
+  background: var(--sage);
   border: 1px solid var(--rule);
 }
 
@@ -423,7 +422,7 @@ ul, ol { margin: 0; padding: 0; }
    it loads. */
 .photo {
   border: 1px solid var(--rule);
-  background: var(--blush);
+  background: var(--sage);
 }
 
 .photo img {
@@ -548,7 +547,7 @@ ul, ol { margin: 0; padding: 0; }
   top: 0.7em;
   width: 14px;
   height: 1px;
-  background: var(--rose);
+  background: var(--accent);
 }
 
 .credential-list strong {
@@ -719,7 +718,6 @@ ul, ol { margin: 0; padding: 0; }
   color: var(--ink-on-dark);
 }
 
-.band-blush .taglist li,
 .band-sage .taglist li,
 .band-sky .taglist li { background: var(--ground); }
 
@@ -768,7 +766,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .notice {
   padding: var(--space-m);
-  border: 1px dashed var(--rose);
+  border: 1px dashed var(--accent);
   background: var(--surface);
   font-size: var(--step-small);
   color: var(--ink-muted);
@@ -884,3 +882,37 @@ ul, ol { margin: 0; padding: 0; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Accreditation marks — supplied artwork sits on white so each one gets its
+   own panel rather than being dropped onto a coloured band.
+   -------------------------------------------------------------------------- */
+
+.accreditation {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+  margin-top: var(--space-l);
+}
+
+.accreditation li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-m);
+  min-height: 84px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.accreditation img {
+  width: auto;
+  height: 52px;
+  object-fit: contain;
+}
+
+.site-footer .accreditation { margin-top: var(--space-s); }
+.site-footer .accreditation img { height: 40px; }
+.site-footer .accreditation li { min-height: 0; padding: var(--space-2xs) var(--space-s); }
