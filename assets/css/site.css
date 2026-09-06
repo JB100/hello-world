@@ -912,7 +912,3 @@ ul, ol { margin: 0; padding: 0; }
   height: 52px;
   object-fit: contain;
 }
-
-.site-footer .accreditation { margin-top: var(--space-s); }
-.site-footer .accreditation img { height: 40px; }
-.site-footer .accreditation li { min-height: 0; padding: var(--space-2xs) var(--space-s); }
