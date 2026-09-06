@@ -12,8 +12,9 @@
   --oat:         #e9e4d8;
   --clay:        #bfac9b;
   --ink:         #262523;
-  --ink-muted:   #6a645c;
+  --ink-muted:   #635e56;
   --rule:        #dcd6c9;
+  --error:       #8f2f22;
   --ink-on-dark: #f4f1ea;
   --muted-on-dark: #b8b2a6;
 
@@ -38,6 +39,9 @@
   --space-2xl: 5.625rem;
   --space-3xl: 8.4375rem;
 
+  /* Height of the sticky masthead plus a little breathing room. */
+  --header-height: 7.5rem;
+
   --measure: 62ch;
   --measure-tight: 48ch;
   --shell: 74rem;
@@ -57,6 +61,9 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* The masthead is sticky, so anchored targets and keyboard focus must be
+     scrolled clear of it — WCAG 2.2 AA, Focus Not Obscured (Minimum). */
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -769,6 +776,36 @@ ul, ol { margin: 0; padding: 0; }
 .field textarea { min-height: 9rem; resize: vertical; }
 
 .field-note { font-size: var(--step-small); color: var(--ink-muted); }
+
+.field .required { color: var(--error); font-weight: 500; }
+
+.field input:focus-visible,
+.field textarea:focus-visible,
+.field select:focus-visible { outline-offset: 1px; }
+
+.field-error {
+  font-size: var(--step-small);
+  color: var(--error);
+  font-weight: 500;
+}
+
+[aria-invalid="true"] { border-color: var(--error); border-width: 2px; }
+
+.error-summary {
+  padding: var(--space-m);
+  margin-bottom: var(--space-l);
+  border: 2px solid var(--error);
+  background: var(--surface);
+}
+
+.error-summary h2 {
+  font-size: var(--step-h3);
+  margin-bottom: var(--space-xs);
+}
+
+.error-summary ul { display: grid; gap: var(--space-2xs); padding-left: var(--space-s); }
+.error-summary li { list-style: disc; }
+.error-summary a { color: var(--error); }
 
 .detail-list {
   list-style: none;
