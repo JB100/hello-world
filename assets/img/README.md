@@ -1,23 +1,22 @@
 # Images
 
-Three files belong in this folder. The pages already reference them by these
-exact names, so once they are here everything renders.
+| Filename                | What it is                       | Size        |
+| ----------------------- | -------------------------------- | ----------- |
+| `kat-portrait.jpg`      | Portrait photograph for the hero | 1400 x 2100 |
+| `babcp-accredited.jpg`  | BABCP Accredited mark            | 600 x 600   |
+| `emdr-uk.jpg`           | EMDR UK mark                     | 600 x 325   |
 
-| Filename                | What it is                          |
-| ----------------------- | ----------------------------------- |
-| `kat-portrait.jpg`      | Portrait photograph for the hero    |
-| `babcp-accredited.png`  | BABCP Accredited mark               |
-| `emdr-uk.png`           | EMDR UK mark                        |
+The `width` and `height` attributes on each `<img>` match these dimensions.
+They reserve the space while the file loads so the page doesn't jump — if you
+replace a file at different proportions, update those two numbers to match.
 
-The `width` and `height` attributes on each `<img>` reserve the space while
-the file loads, so the page doesn't jump. If you save a file at different
-proportions, update those two numbers to match.
+The portrait was supplied at 2000 x 3000 and 971 KB. It is displayed about
+480px wide, so it has been resized to 1400px and re-encoded at quality 82,
+which brought it to 277 KB with no visible difference. Keep your full-size
+original elsewhere.
 
-Save the portrait around 1333px wide, JPEG quality 80. Keep the accreditation
-marks as supplied — they are displayed at 52px tall, so anything above about
-300px wide is plenty.
-
-Both accreditation marks have white backgrounds rather than transparency, so
-each is displayed inside its own white panel. If you can get transparent PNG
-or SVG versions from BABCP and EMDR UK, send them over and I'll drop the
-panels.
+Both accreditation marks were supplied as JPEGs with a `.png` extension and
+have been re-saved as real `.jpg` files. They have white backgrounds rather
+than transparency, so each is displayed inside its own white panel. If you can
+get transparent PNG or SVG versions from BABCP and EMDR UK, send them and the
+panels can go.

@@ -54,10 +54,8 @@ the form and email address on `contact.html`, reached from the navigation.
 ## Still to do
 
 - [ ] Practice logo — the header currently uses a text wordmark
-- [ ] Accreditation marks — `assets/img/babcp-accredited.png` and
-      `assets/img/emdr-uk.png`; both are already referenced
-- [ ] Portrait photograph — save it as `assets/img/kat-portrait.jpg`
-      (see `assets/img/README.md`); the hero already references it
+- [x] Accreditation marks — in place below the hero
+- [x] Portrait photograph — in place in the hero
 - [ ] Real contact details, fees and availability
 - [ ] Testimonial copy
 - [ ] Form handler for the contact form (Formspree or Netlify Forms)
