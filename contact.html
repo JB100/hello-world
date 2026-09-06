@@ -58,8 +58,8 @@
 
         <dl class="detail-list">
           <div>
-            <dt>Email</dt>
-            <dd style="margin: 0"><a class="link-underline" href="mailto:hello@katlech.co.uk">hello@katlech.co.uk</a></dd>
+            <dt>Enquiries</dt>
+            <dd style="margin: 0">Through the form on this page</dd>
           </div>
           <div>
             <dt>Sessions</dt>
@@ -71,11 +71,18 @@
           </div>
         </dl>
 
-        <p class="notice">Placeholder details. Send me your real email address, phone number, session fees and availability and I'll put them in.</p>
+        <p class="notice">Placeholder details. Send me your session fees, availability and typical response time and I'll put them in.</p>
       </div>
 
       <div>
-        <form id="enquiry-form" method="post" action="#" novalidate>
+        <form id="enquiry-form" method="post"
+              action="https://formspree.io/f/YOUR_FORM_ID" novalidate>
+          <input type="hidden" name="_subject" value="Website enquiry">
+          <!-- Spam trap: a real person never fills this in, bots usually do. -->
+          <p class="honeypot" aria-hidden="true">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </p>
           <div id="error-summary" class="error-summary" role="alert" tabindex="-1" hidden>
             <h2>There is a problem</h2>
             <ul id="error-summary-list"></ul>
@@ -121,15 +128,15 @@
           <p class="field-note" style="margin-top: var(--space-m)">Your details are used only to respond to your enquiry. See the <a class="link-underline" href="privacy.html">privacy policy</a>.</p>
         </form>
 
-        <p class="notice">This form needs a form handler before it will send. Formspree or Netlify Forms both work on a static site &mdash; tell me which you'd prefer and I'll wire it up.</p>
+        <p class="notice">The form is wired to Formspree, which has a free tier. Create a form at formspree.io, then replace YOUR_FORM_ID in the form's action with the ID it gives you and it goes live. Nothing else needs changing.</p>
       </div>
     </div>
   </section>
 
-  <section class="section band-ink">
+  <section class="section band-sage crisis">
     <div class="shell-narrow closing">
       <h2>In a crisis?</h2>
-      <p style="color: var(--muted-on-dark)">This website is not a crisis service and enquiries are not monitored around the clock. If you need urgent help, contact your GP, call NHS 111, or call the Samaritans free on 116 123, at any hour.</p>
+      <p>This website is not a crisis service and enquiries are not monitored around the clock. If you need urgent help, contact your GP, call NHS 111, or call the Samaritans free on 116 123, at any hour.</p>
     </div>
   </section>
 
@@ -139,14 +146,17 @@
   <div class="shell">
     <div class="footer-grid">
       <div>
-        <h2>Kat Lech Psychotherapy</h2>
+        <a class="footer-wordmark" href="index.html">
+          <img src="assets/img/kat-lech-psychotherapy-logo-white.svg" width="1957" height="211"
+               alt="Kat Lech Psychotherapy">
+        </a>
         <p>Online therapy for adults across the UK, specialising in trauma, anxiety and ADHD.</p>
       </div>
 
       <div>
         <h2>Get in touch</h2>
         <ul>
-          <li><a href="mailto:hello@katlech.co.uk">hello@katlech.co.uk</a></li>
+          <li><a href="contact.html">Send a message</a></li>
         </ul>
       </div>
 

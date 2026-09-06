@@ -48,8 +48,10 @@ changes everywhere.
 Typefaces are Literata (headings) and Figtree (body), loaded from Google
 Fonts in each page's `<head>`.
 
-The site has no booking buttons or calendar by design. Contact runs through
-the form and email address on `contact.html`, reached from the navigation.
+The site has no booking buttons or calendar by design, and no email address
+is published anywhere. All enquiries run through the form on `contact.html`,
+which posts to Formspree and carries an off-screen honeypot field to absorb
+bot submissions.
 
 ## Still to do
 
@@ -58,9 +60,10 @@ the form and email address on `contact.html`, reached from the navigation.
       `assets/img/README.md`) — the current file relies on font fallback
 - [x] Accreditation marks — in place below the hero
 - [x] Portrait photograph — in place in the hero
-- [ ] Real contact details, fees and availability
-- [ ] Testimonial copy
-- [ ] Form handler for the contact form (Formspree or Netlify Forms)
+- [ ] Session fees, availability and typical response time
+- [x] Testimonials — eleven, live on the testimonials page
+- [ ] Formspree form ID — replace `YOUR_FORM_ID` in `contact.html`
+- [ ] Insurer logos (AXA Health, Aviva, WPA) — artwork needed
 - [ ] Privacy policy page (`privacy.html` is linked but not yet written)
 
 ## Accessibility

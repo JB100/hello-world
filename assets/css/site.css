@@ -141,11 +141,17 @@ ul, ol { margin: 0; padding: 0; }
 .band-ink { background: var(--ink); color: var(--ink-on-dark); }
 .band-ink h2, .band-ink h3 { color: var(--ink-on-dark); }
 
+/* The line under a heading. Same typeface as the headings so subheads read
+   as one system across every page. */
 .lead {
+  font-family: var(--font-display);
   font-size: var(--step-lead);
-  line-height: 1.5;
+  line-height: 1.45;
+  color: var(--ink-muted);
   max-width: var(--measure-tight);
 }
+
+.band-ink .lead { color: var(--muted-on-dark); }
 
 .prose > * + * { margin-top: var(--space-s); }
 
@@ -346,11 +352,9 @@ ul, ol { margin: 0; padding: 0; }
 
 .hero-affirm {
   margin-top: var(--space-m);
-  font-family: var(--font-body);
-  font-weight: 500;
+  font-family: var(--font-display);
   font-size: var(--step-h3);
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  line-height: 1.35;
   max-width: 26ch;
 }
 
@@ -602,6 +606,13 @@ ul, ol { margin: 0; padding: 0; }
   margin-bottom: var(--space-s);
 }
 
+.footer-wordmark {
+  display: block;
+  margin-bottom: var(--space-s);
+}
+
+.footer-wordmark img { height: 24px; width: auto; }
+
 .site-footer a { color: var(--ink-on-dark); }
 
 .site-footer ul { list-style: none; display: grid; gap: var(--space-2xs); }
@@ -638,8 +649,8 @@ ul, ol { margin: 0; padding: 0; }
 
 .therapy-head .kicker {
   font-family: var(--font-display);
-  font-style: italic;
   font-size: var(--step-lead);
+  line-height: 1.45;
   color: var(--ink-muted);
   margin-top: var(--space-2xs);
 }
@@ -742,8 +753,24 @@ ul, ol { margin: 0; padding: 0; }
 .quote blockquote {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--step-h3);
-  line-height: 1.4;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+}
+
+.quote figcaption { font-weight: 500; color: var(--ink); }
+
+/* Masonry-ish columns so quotes of very different lengths don't leave one
+   column short. */
+@media (min-width: 52rem) {
+  .quote-grid {
+    display: block;
+    columns: 2;
+    column-gap: var(--space-l);
+  }
+  .quote {
+    break-inside: avoid;
+    margin-bottom: var(--space-l);
+  }
 }
 
 .quote figcaption {
@@ -883,8 +910,8 @@ ul, ol { margin: 0; padding: 0; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-s);
-  margin-top: var(--space-l);
+  gap: var(--space-xs);
+  margin-top: var(--space-s);
 }
 
 .accreditation li {
@@ -902,3 +929,21 @@ ul, ol { margin: 0; padding: 0; }
   height: 52px;
   object-fit: contain;
 }
+
+/* --------------------------------------------------------------------------
+   Contact extras
+   -------------------------------------------------------------------------- */
+
+/* Off-screen rather than display:none — bots skip hidden fields, and this
+   still has to be a real field they can fill in. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* The crisis notice sat on the same dark ground as the footer, so the two
+   read as one block. A pale band and a rule separate them. */
+.crisis { border-bottom: 3px solid var(--accent); }
