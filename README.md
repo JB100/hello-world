@@ -50,8 +50,8 @@ Fonts in each page's `<head>`.
 ## Still to do
 
 - [ ] Logo artwork — the header currently uses a text wordmark
-- [ ] Photography — image placeholders are marked with `.frame` and a
-      `data-label` describing what belongs there
+- [ ] Portrait photograph — save it as `assets/img/kat-portrait.jpg`
+      (see `assets/img/README.md`); the hero already references it
 - [ ] Real contact details, fees and availability
 - [ ] Testimonial copy
 - [ ] Form handler for the contact form (Formspree or Netlify Forms)
