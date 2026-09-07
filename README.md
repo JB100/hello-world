@@ -65,8 +65,8 @@ bot submissions.
 - [ ] Formspree form ID — replace `YOUR_FORM_ID` in `contact.html`
 - [x] Insurer logos — on the insurance page and the home page
 - [x] Fees and response time — on the contact page
-- [x] Privacy policy page — written; the bracketed details in it still need
-      filling in (retention period and date)
+- [x] Privacy policy page — written; the last-updated date in it still needs
+      filling in
 - [ ] ICO registration and a separate clinical privacy notice — outside the
       website, but the privacy page assumes both exist
 
