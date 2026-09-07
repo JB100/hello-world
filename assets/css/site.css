@@ -452,6 +452,7 @@ h3 + * { margin-top: var(--space-m); }
    and height attributes on the img reserve the space so nothing shifts as
    it loads. */
 .photo {
+  margin: 0;
   border: 1px solid var(--rule);
   background: var(--sage);
 }
@@ -1217,4 +1218,26 @@ p > a.link-underline:only-child::after {
 /* The mobile menu already has full-width rows; no pseudo-element needed. */
 @media (max-width: 62rem) {
   .nav-list a::after { content: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Photographs on small screens
+   -------------------------------------------------------------------------- */
+
+/* Once the two-column layouts stack, both photographs ran the full width of
+   the screen and dominated the page. Halved and centred, so they read as a
+   picture beside the writing rather than as the subject of it. */
+
+@media (max-width: 59.9375rem) {
+  .hero .photo {
+    max-width: 50%;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 57.9375rem) {
+  .about-grid .photo-mounted {
+    max-width: 50%;
+    margin-inline: auto;
+  }
 }
