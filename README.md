@@ -81,6 +81,33 @@ practice is online and takes clients anywhere in the UK. If the domain ever
 changes, the absolute URLs to update are the canonicals, the Open Graph
 tags, the JSON-LD block in `index.html`, `robots.txt` and `sitemap.xml`.
 
+## Server configuration
+
+`.htaccess` is read by Apache and LiteSpeed, which is what Hostinger runs. It
+redirects everything to `https://katlech.co.uk` in a single hop, sets the
+security headers (HSTS, a content security policy, nosniff, frame denial,
+referrer and permissions policy), turns on compression, sets cache lifetimes,
+and points 404s at `404.html`. On Cloudflare Pages or Netlify the file is
+ignored and the equivalent settings live in the host's dashboard.
+
+Turn HSTS on only once the certificate is working — browsers remember it for
+a year.
+
+The content security policy allows exactly three outside origins: Google
+Fonts for the stylesheet, `fonts.gstatic.com` for the font files, and
+`formspree.io` for the form submission. Adding anything else to the site —
+analytics, a map, an embedded video — means adding it there too, or the
+browser will silently block it.
+
+## Images
+
+The two photographs are served as WebP through `<picture>`, at several widths,
+with the original JPEG as the fallback for older browsers. A phone downloads
+33 KB for the portrait instead of 283 KB. If either photograph is replaced,
+regenerate the WebP versions at the same widths (480, 760, 1400 for the
+portrait; 480, 760 for the beach photograph) or the old ones will keep being
+served.
+
 ## Accessibility
 
 Built to WCAG 2.2 AA: semantic landmarks, a skip link, visible keyboard

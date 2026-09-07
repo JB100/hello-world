@@ -1,0 +1,121 @@
+# Kat Lech Psychotherapy — server configuration for Apache and LiteSpeed
+# (which is what Hostinger runs). Static site, so this file does the work a
+# framework would otherwise do: canonical URL, security headers, compression,
+# caching and the error page.
+#
+# If the site ever moves to Cloudflare Pages, Netlify or GitHub Pages, this
+# file is ignored — those hosts have their own settings for the same things.
+
+# --------------------------------------------------------------------------
+# One canonical address: https://katlech.co.uk
+# --------------------------------------------------------------------------
+# Both rules are combined into a single redirect. A visitor typing
+# http://www.katlech.co.uk arrives in one hop, not two.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://katlech.co.uk%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# --------------------------------------------------------------------------
+# Security headers
+# --------------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+  # Only ever load this site over HTTPS. Browsers remember this for a year, so
+  # turn it on only once the certificate is installed and working — if the
+  # certificate later lapses, visitors get an error rather than a warning.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # What the page is allowed to load. Everything comes from this site except
+  # the typefaces (Google Fonts) and the form submission (Formspree).
+  # 'unsafe-inline' is scoped to style-src-attr, which permits the style="..."
+  # attributes in the markup while still blocking injected <style> and
+  # <script> blocks — the thing that actually matters.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src https://fonts.gstatic.com; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+
+  # Don't let a browser second-guess a file's declared type.
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Don't allow the site to be framed by anyone — the old header, for browsers
+  # that don't read frame-ancestors above.
+  Header always set X-Frame-Options "DENY"
+
+  # Send the referring page to other sites, but never the full path, and never
+  # anything at all when leaving HTTPS.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Nothing here needs a camera, a microphone or a location.
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+  # HTML is never cached, so an edit is visible immediately.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# --------------------------------------------------------------------------
+# Compression
+# --------------------------------------------------------------------------
+# Text compresses by roughly 70%. Images and fonts are already compressed and
+# are left alone.
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+# --------------------------------------------------------------------------
+# Caching
+# --------------------------------------------------------------------------
+# Photographs and logos never change without also changing filename, so they
+# are cached for a year. The stylesheet and script are cached for a day, since
+# they do get edited and their filenames stay the same.
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                        "access plus 1 week"
+
+  ExpiresByType text/html               "access plus 0 seconds"
+  ExpiresByType text/css                "access plus 1 day"
+  ExpiresByType application/javascript  "access plus 1 day"
+
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType image/x-icon            "access plus 1 year"
+
+  ExpiresByType text/xml                "access plus 1 day"
+</IfModule>
+
+# --------------------------------------------------------------------------
+# Error page
+# --------------------------------------------------------------------------
+
+ErrorDocument 404 /404.html
+
+# --------------------------------------------------------------------------
+# Housekeeping
+# --------------------------------------------------------------------------
+
+# No directory listings if a folder has no index file.
+Options -Indexes
+
+# Keep the developer notes out of the served site.
+<FilesMatch "\.(md|json|lock)$">
+  Require all denied
+</FilesMatch>
+
+# Serve everything as UTF-8 unless told otherwise.
+AddDefaultCharset UTF-8

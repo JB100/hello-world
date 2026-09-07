@@ -76,6 +76,9 @@ html {
   /* The masthead is sticky, so anchored targets and keyboard focus must be
      scrolled clear of it — WCAG 2.2 AA, Focus Not Obscured (Minimum). */
   scroll-padding-top: var(--header-height);
+
+  /* iOS enlarges text when a phone is turned to landscape unless stopped. */
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -315,7 +318,22 @@ h3 + * { margin-top: var(--space-m); }
 .nav-list a:hover,
 .nav-list a[aria-current="page"] { border-color: var(--accent); }
 
+/* Stacked and centred, the masthead took 146px — a quarter of a small phone
+   screen, and it is sticky, so that quarter never comes back. Below the
+   breakpoint the logo sits beside the menu button instead. */
 @media (max-width: 62rem) {
+  :root { --header-height: 5rem; }
+
+  .masthead-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-s);
+    padding-block: var(--space-xs);
+  }
+
+  .wordmark img { height: 32px; }
+
   .nav {
     display: none;
     position: absolute;
@@ -1168,3 +1186,35 @@ h3 + * { margin-top: var(--space-m); }
 }
 
 .qual-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   Target size
+   -------------------------------------------------------------------------- */
+
+/* WCAG 2.2 AA, Target Size (Minimum): a link that sits on its own — in the
+   navigation, in the footer, or alone in a paragraph — needs a 24px target.
+   Links inside a sentence are exempt and are left alone. The hit area is
+   grown with a pseudo-element rather than with padding, so the underline
+   stays tight to the type. */
+.nav-list a,
+.site-footer a,
+p > a.link-underline:only-child {
+  position: relative;
+}
+
+.nav-list a::after,
+.site-footer a::after,
+p > a.link-underline:only-child::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem -0.3rem;
+}
+
+/* The footer links stack, so they also need room between them or the enlarged
+   targets would overlap each other. */
+.site-footer li + li { margin-top: var(--space-xs); }
+
+/* The mobile menu already has full-width rows; no pseudo-element needed. */
+@media (max-width: 62rem) {
+  .nav-list a::after { content: none; }
+}

@@ -20,6 +20,7 @@
 <link rel="icon" href="assets/img/favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#f8faf9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..600&family=Figtree:wght@400..600&display=swap" rel="stylesheet">
@@ -71,9 +72,15 @@
       </div>
 
       <figure class="photo photo-mounted">
-        <img src="assets/img/kat-lech-about.jpg" width="900" height="900"
-             alt="Kat crouching on a wide sandy beach with her two French bulldogs, cliffs and blue sky behind her."
-             loading="lazy">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/kat-lech-about-480.webp 480w,
+                          assets/img/kat-lech-about-760.webp 760w"
+                  sizes="(min-width: 58rem) 400px, 95vw">
+          <img src="assets/img/kat-lech-about.jpg" width="900" height="900"
+               alt="Kat crouching on a wide sandy beach with her two French bulldogs, cliffs and blue sky behind her."
+               loading="lazy" decoding="async">
+        </picture>
       </figure>
     </div>
   </section>
