@@ -62,7 +62,7 @@ bot submissions.
 - [x] Accreditation marks — in place below the hero
 - [x] Portrait photograph — in place in the hero
 - [x] Testimonials — eleven, live on the testimonials page
-- [ ] Formspree form ID — replace `YOUR_FORM_ID` in `contact.html`
+- [x] Formspree form ID — wired up in `contact.html`
 - [x] Insurer logos — on the insurance page and the home page
 - [x] Fees and response time — on the contact page
 - [x] Privacy policy page — written
