@@ -1026,7 +1026,15 @@ h3 + * { margin-top: var(--space-m); }
 .accreditation img {
   width: auto;
   height: 52px;
-  object-fit: contain;
+}
+
+/* The EMDR mark is a wide lens shape and the BABCP one is square, so matching
+   their heights would make the EMDR mark look much the larger of the two.
+   Matched by area instead, with the difference paid back as margin so both
+   labels still start on the same line. */
+.accreditation img[src*="emdr"] {
+  height: 38px;
+  margin-block: 7px;
 }
 
 .accreditation span {
