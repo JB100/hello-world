@@ -615,6 +615,11 @@ h3 + * { margin-top: var(--space-m); }
 
 .closing { text-align: center; }
 .closing p { margin-inline: auto; }
+
+/* Short, centred blocks. The general heading gap is sized for a column of
+   running text and looks like a hole under two centred lines, so these take
+   the paragraph gap instead. */
+.closing h2 + * { margin-top: var(--space-s); }
 .closing-next { margin-top: var(--space-l); }
 
 /* --------------------------------------------------------------------------
@@ -645,6 +650,9 @@ h3 + * { margin-top: var(--space-m); }
   color: var(--ink-on-dark);
   margin-bottom: var(--space-s);
 }
+
+/* Small type in short columns — the general heading gap is too much here. */
+.site-footer h2 + * { margin-top: 0; }
 
 .footer-wordmark {
   display: block;
@@ -1060,7 +1068,12 @@ h3 + * { margin-top: var(--space-m); }
 
   /* A square photograph at full column width towered over three short
      paragraphs. Capped, so the two halves are closer in height. */
-  .about-grid .photo-mounted { max-width: 26rem; justify-self: end; }
+  .about-grid .photo-mounted {
+    max-width: 26rem;
+    justify-self: end;
+    /* Room for the corners the tilt throws out past the box. */
+    margin-right: var(--space-xs);
+  }
 
   .about-grid .prose { max-width: var(--measure-tight); }
 }
@@ -1069,18 +1082,20 @@ h3 + * { margin-top: var(--space-m); }
    shadow soft enough to read as depth rather than decoration. */
 .photo-mounted {
   margin: 0;
-  padding: var(--space-xs);
+  /* Polaroid proportions: even margin on three sides, a deep one below. */
+  padding: var(--space-xs) var(--space-xs) var(--space-l);
   background: var(--surface);
   border: 1px solid var(--rule);
+  transform: rotate(-1.75deg);
   box-shadow:
-    0 1px 2px rgba(45, 58, 58, 0.05),
-    0 18px 40px -24px rgba(45, 58, 58, 0.45);
+    0 2px 3px rgba(45, 58, 58, 0.06),
+    0 22px 45px -26px rgba(45, 58, 58, 0.5);
 }
 
 .photo-mounted img { display: block; }
 
 @media (min-width: 58rem) {
-  .photo-mounted { padding: var(--space-s); }
+  .photo-mounted { padding: var(--space-s) var(--space-s) var(--space-xl); }
 }
 
 /* Quiet note under the testimonials — present for anyone who looks for it,
