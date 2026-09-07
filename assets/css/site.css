@@ -462,6 +462,11 @@ h3 + * { margin-top: var(--space-m); }
   }
 }
 
+/* The heading here is a column of its own, not a heading sitting above the
+   text, so the general gap under a heading would push the second column down
+   the page instead of adding space beneath it. */
+.intro-grid > h2 + * { margin-top: 0; }
+
 /* --------------------------------------------------------------------------
    Specialisms — alternating bands, not a card grid. Heavy subject matter
    reads calmer with full-width room around it.
@@ -1108,3 +1113,50 @@ h3 + * { margin-top: var(--space-m); }
   color: var(--ink-muted);
   max-width: var(--measure);
 }
+
+/* --------------------------------------------------------------------------
+   Qualifications panel
+   -------------------------------------------------------------------------- */
+
+.quals {
+  display: grid;
+  gap: var(--space-l);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: var(--space-l);
+}
+
+@media (min-width: 58rem) {
+  .quals {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-2xl);
+    padding: var(--space-l) var(--space-xl);
+  }
+}
+
+.qual-group h3 {
+  font-family: var(--font-body);
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* The label is a rule-topped heading; the list belongs tight beneath it. */
+.qual-group h3 + * { margin-top: var(--space-s); }
+
+.qual-list {
+  list-style: none;
+  display: grid;
+}
+
+.qual-list li {
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--rule);
+  max-width: var(--measure);
+}
+
+.qual-list li:last-child { border-bottom: 0; padding-bottom: 0; }

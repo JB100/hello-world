@@ -69,6 +69,18 @@ bot submissions.
 - [ ] ICO registration and a separate clinical privacy notice — outside the
       website, but the privacy page assumes both exist
 
+## Search
+
+Each page carries its own title, meta description, canonical URL and Open
+Graph tags, and `assets/img/og-image.jpg` is the share card. The home page
+also carries JSON-LD describing the practice, Kat's accreditations and the
+session fees. `robots.txt` and `sitemap.xml` sit at the root.
+
+Everything is scoped to the United Kingdom rather than to a town, since the
+practice is online and takes clients anywhere in the UK. If the domain ever
+changes, the absolute URLs to update are the canonicals, the Open Graph
+tags, the JSON-LD block in `index.html`, `robots.txt` and `sitemap.xml`.
+
 ## Accessibility
 
 Built to WCAG 2.2 AA: semantic landmarks, a skip link, visible keyboard

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katlech.co.uk/sitemap.xml
