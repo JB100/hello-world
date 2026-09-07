@@ -15,7 +15,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteCond %{HTTPS} !=on [OR]
+  # Shared hosts often terminate TLS at a load balancer and pass the request
+  # on as plain HTTP, so %{HTTPS} is not "on" even though the visitor is on
+  # HTTPS. Checking X-Forwarded-Proto as well is what stops that turning into
+  # an endless redirect loop.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://katlech.co.uk%{REQUEST_URI} [R=301,L]
+
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://katlech.co.uk%{REQUEST_URI} [R=301,L]
 </IfModule>
@@ -25,10 +32,11 @@
 # --------------------------------------------------------------------------
 
 <IfModule mod_headers.c>
-  # Only ever load this site over HTTPS. Browsers remember this for a year, so
-  # turn it on only once the certificate is installed and working — if the
-  # certificate later lapses, visitors get an error rather than a warning.
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  # Only ever load this site over HTTPS. Browsers remember this for a year,
+  # which is exactly why it is commented out: switch it on once the
+  # certificate is installed and the site loads over HTTPS, not before. Turned
+  # on too early it can make a broken site stay broken in your own browser.
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
   # What the page is allowed to load. Everything comes from this site except
   # the typefaces (Google Fonts) and the form submission (Formspree).
@@ -109,13 +117,17 @@ ErrorDocument 404 /404.html
 # Housekeeping
 # --------------------------------------------------------------------------
 
-# No directory listings if a folder has no index file.
+# No directory listings if a folder has no index file. If the site returns a
+# 500 error the moment this file is uploaded, this is the usual culprit —
+# a few hosts refuse Options in .htaccess. Comment it out and retry.
 Options -Indexes
 
 # Keep the developer notes out of the served site.
-<FilesMatch "\.(md|json|lock)$">
-  Require all denied
-</FilesMatch>
+<IfModule mod_authz_core.c>
+  <FilesMatch "\.(md|json|lock)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
 
 # Serve everything as UTF-8 unless told otherwise.
 AddDefaultCharset UTF-8
