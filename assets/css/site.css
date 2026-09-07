@@ -166,8 +166,17 @@ ul, ol { margin: 0; padding: 0; }
 .band-ink .lead { color: var(--muted-on-dark); }
 
 .prose > * + * { margin-top: var(--space-s); }
+/* One rule for the gap under a heading, rather than a value per section.
+   It has to be clearly larger than the gap between two paragraphs, or the
+   heading reads as part of the block above it instead of introducing what
+   follows. Cards set their own tighter values below. */
+h1 + *,
+h2 + *,
+h3 + * { margin-top: var(--space-m); }
+
+/* Running text gets more, since the heading is carrying more beneath it. */
 .prose > h2 + *,
-.prose > h3 + * { margin-top: var(--space-m); }
+.prose > h3 + * { margin-top: var(--space-l); }
 
 .rule {
   border: 0;
@@ -1040,10 +1049,38 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 @media (min-width: 58rem) {
+  /* The text is short and the photograph is square, so equal columns left the
+     two halves ending at very different heights. The text column is narrower
+     and both are centred on each other instead. */
   .about-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
     gap: var(--space-2xl);
+    align-items: center;
   }
+
+  /* A square photograph at full column width towered over three short
+     paragraphs. Capped, so the two halves are closer in height. */
+  .about-grid .photo-mounted { max-width: 26rem; justify-self: end; }
+
+  .about-grid .prose { max-width: var(--measure-tight); }
+}
+
+/* A mount rather than a border: white card, photograph inset within it, and a
+   shadow soft enough to read as depth rather than decoration. */
+.photo-mounted {
+  margin: 0;
+  padding: var(--space-xs);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 1px 2px rgba(45, 58, 58, 0.05),
+    0 18px 40px -24px rgba(45, 58, 58, 0.45);
+}
+
+.photo-mounted img { display: block; }
+
+@media (min-width: 58rem) {
+  .photo-mounted { padding: var(--space-s); }
 }
 
 /* Quiet note under the testimonials — present for anyone who looks for it,
