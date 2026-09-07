@@ -66,7 +66,7 @@ bot submissions.
 - [x] Insurer logos — on the insurance page and the home page
 - [x] Fees and response time — on the contact page
 - [x] Privacy policy page — written; the bracketed details in it still need
-      filling in (contact route, ICO number, host, retention period, date)
+      filling in (retention period and date)
 - [ ] ICO registration and a separate clinical privacy notice — outside the
       website, but the privacy page assumes both exist
 
