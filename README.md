@@ -16,6 +16,7 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies, no framework.
 | `testimonials.html`   | Testimonials     |
 | `about.html`          | About Kat        |
 | `contact.html`        | Contact          |
+| `privacy.html`        | Privacy policy   |
 
 ## Running it locally
 
@@ -64,9 +65,10 @@ bot submissions.
 - [ ] Formspree form ID — replace `YOUR_FORM_ID` in `contact.html`
 - [x] Insurer logos — on the insurance page and the home page
 - [x] Fees and response time — on the contact page
-- [ ] Logo re-export with text converted to outlines — the current
-      lockup depends on Didot and Helvetica Neue (see `assets/img/README.md`)
-- [ ] Privacy policy page (`privacy.html` is linked but not yet written)
+- [x] Privacy policy page — written; the bracketed details in it still need
+      filling in (contact route, ICO number, host, retention period, date)
+- [ ] ICO registration and a separate clinical privacy notice — outside the
+      website, but the privacy page assumes both exist
 
 ## Accessibility
 
