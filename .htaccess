@@ -25,6 +25,14 @@
 
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://katlech.co.uk%{REQUEST_URI} [R=301,L]
+
+  # The home page is "/", not "/index.html". Anyone arriving at the long form
+  # — an old link, a search result, a bookmark — is sent to the short one.
+  # Matching on THE_REQUEST rather than the path is what keeps this from
+  # looping: the server's own internal rewrite of "/" to "/index.html" never
+  # changes the original request line, so it is not matched a second time.
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ / [R=301,L]
 </IfModule>
 
 # --------------------------------------------------------------------------
