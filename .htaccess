@@ -33,6 +33,20 @@
   # changes the original request line, so it is not matched a second time.
   RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
   RewriteRule ^ / [R=301,L]
+
+  # Addresses have no .html on the end: /contact, not /contact.html. Anyone
+  # arriving at the long form is redirected to the short one, for the same
+  # reason as the home page above — one address per page, not two.
+  RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # And the short address is served from the file that is actually on disk.
+  # This is an internal rewrite, so the browser keeps showing /contact. The
+  # -f test means it only applies where the .html file genuinely exists;
+  # anything else falls through to the 404 page.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ /$1.html [L]
 </IfModule>
 
 # --------------------------------------------------------------------------
